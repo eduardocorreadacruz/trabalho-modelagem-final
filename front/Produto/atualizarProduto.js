@@ -1,9 +1,14 @@
-async function carregarProduto() {
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get('id');
-  if (!id) return;
+async function carregarProdutoPorId(id) {
+  if (!id) {
+    document.getElementById('mensagem').innerText = 'Digite um ID válido.';
+    return;
+  }
   try {
-    const response = await fetch(`http://localhost:3000/produtos/${id}`);
+    const response = await fetch(`http://localhost:3000/produto/${id}`);
+    if (!response.ok) {
+      document.getElementById('mensagem').innerText = 'Produto não encontrado.';
+      return;
+    }
     const produto = await response.json();
     document.getElementById('produtoId').value = produto.idProduto || produto.id;
     document.getElementById('title').value = produto.title;
@@ -14,9 +19,23 @@ async function carregarProduto() {
     document.getElementById('stock').value = produto.stock;
     document.getElementById('brand').value = produto.brand;
     document.getElementById('thumbnail').value = produto.thumbnail;
+    document.getElementById('mensagem').innerText = '';
   } catch (error) {
-    document.getElementById('mensagem').innerText = 'Erro ao carregar produto.';
+    document.getElementById('mensagem').innerText = 'Erro ao buscar produto.';
   }
+}
+
+document.getElementById('btnBuscarProduto').addEventListener('click', function() {
+  const id = document.getElementById('buscarIdProduto').value;
+  carregarProdutoPorId(id);
+});
+
+// Mantém o carregamento automático por query param
+async function carregarProduto() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  if (!id) return;
+  await carregarProdutoPorId(id);
 }
 
 document.getElementById('formAtualizarProduto').addEventListener('submit', async function(event) {
@@ -33,7 +52,7 @@ document.getElementById('formAtualizarProduto').addEventListener('submit', async
     thumbnail: document.getElementById('thumbnail').value
   };
   try {
-    const response = await fetch(`http://localhost:3000/produtos/${id}`, {
+    const response = await fetch(`http://localhost:3000/produto/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
