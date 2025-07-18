@@ -2,7 +2,7 @@ async function carregarProdutos() {
   const tabela = document.getElementById('tabelaProdutos');
   tabela.innerHTML = '';
   try {
-    const response = await fetch('http://localhost:3000/produtos');
+    const response = await fetch('http://localhost:3000/produto');
     const produtos = await response.json();
     produtos.forEach(produto => {
       const tr = document.createElement('tr');
@@ -31,7 +31,7 @@ async function carregarProdutos() {
 async function removerProduto(id) {
   if (!confirm('Tem certeza que deseja remover este produto?')) return;
   try {
-    const response = await fetch(`http://localhost:3000/produtos/${id}`, { method: 'DELETE' });
+    const response = await fetch(`http://localhost:3000/produto/${id}`, { method: 'DELETE' });
     const result = await response.json();
     alert(result.message || 'Produto removido!');
     carregarProdutos();

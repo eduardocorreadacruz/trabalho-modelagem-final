@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Cadastrar Produto</title>
-  <!-- Use apenas a fonte Inter, como no style.css -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -22,15 +21,15 @@
   <div class="container">
     <h2>Cadastrar Novo Produto</h2>
     <form id="formCadastroProduto">
-      <label>Título: <input type="text" name="title" required></label>
-      <label>Descrição: <input type="text" name="description" required></label>
-      <label>Categoria: <input type="text" name="category" required></label>
-      <label>Preço: <input type="number" step="0.01" name="price" required></label>
-      <label>Percentual de Desconto: <input type="number" step="0.01" name="discountPercentage" required></label>
-      <label>Estoque: <input type="number" name="stock" required></label>
-      <label>Marca: <input type="text" name="brand" required></label>
-      <label>Imagem (URL): <input type="text" name="thumbnail" required></label>
-      <button type="submit">Cadastrar</button>
+      <label>Título: <input type="text" name="title" id="title" required></label>
+      <label>Descrição: <input type="text" name="description" id="description" required></label>
+      <label>Categoria: <input type="text" name="category" id="category" required></label>
+      <label>Preço: <input type="number" step="0.01" name="price" id="price" required></label>
+      <label>Percentual de Desconto: <input type="number" step="0.01" name="discountPercentage" id="discountPercentage" required></label>
+      <label>Estoque: <input type="number" name="stock" id="stock" required></label>
+      <label>Marca: <input type="text" name="brand" id="brand" required></label>
+      <label>Imagem (URL): <input type="text" name="thumbnail" id="thumbnail" required></label>
+      <button type="submit" id="cadastroProduto">Cadastrar</button>
     </form>
     <div id="mensagem"></div>
   </div>

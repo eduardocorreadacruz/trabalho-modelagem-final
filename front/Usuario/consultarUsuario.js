@@ -4,7 +4,7 @@ document.getElementById('formConsultarUsuario').addEventListener('submit', async
   const resultado = document.getElementById('resultado');
   resultado.innerHTML = '';
   try {
-    const response = await fetch(`http://localhost:3000/usuarios/${id}`);
+    const response = await fetch(`http://localhost:3000/usuario/${id}`);
     if (!response.ok) throw new Error('Usuário não encontrado');
     const usuario = await response.json();
     resultado.innerHTML = `

@@ -10,14 +10,18 @@
   <header>
     <nav>
       <a href="../index.html">Home</a>
-      <a href="cadastrarProduto.html">Cadastrar Produto</a>
-      <a href="listarProduto.html">Listar Produtos</a>
-      <a href="atualizarProduto.html">Atualizar Produto</a>
-      <a href="apagarProduto.html">Apagar Produto</a>
-      <a href="consultarProduto.html">Consultar Produto</a>
+      <a href="cadastrarUsuario.html">Cadastrar Usuário</a>
+      <a href="listarUsuario.html">Listar Usuários</a>
+      <a href="atualizarUsuario.html">Atualizar Usuário</a>
+      <a href="apagarUsuario.html">Apagar Usuário</a>
+      <a href="consultarUsuario.html">Consultar Usuário</a>
     </nav>
   </header>
     <h2>Atualizar Usuário</h2>
+    <div style="margin-bottom: 16px;">
+      <label>ID do Usuário: <input type="number" id="buscarIdUsuario" min="1" style="width: 80px;"></label>
+      <button type="button" id="btnBuscarUsuario">Buscar</button>
+    </div>
     <form id="formAtualizarUsuario">
       <input type="hidden" name="id" id="usuarioId">
       <label>Primeiro Nome: <input type="text" name="firstName" id="firstName" required></label>

@@ -4,7 +4,7 @@ async function listarUsuarios() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const tabela = document.querySelector('#tabelaUsuarios tbody');
+  const tabela = document.querySelector('#tabelaUsuarios');
   const usuarios = await listarUsuarios();
   tabela.innerHTML = '';
   usuarios.forEach(usuario => {
@@ -16,23 +16,17 @@ document.addEventListener('DOMContentLoaded', async () => {
       <td>${usuario.age}</td>
       <td>${usuario.email}</td>
       <td>${usuario.phone}</td>
-      <td>${usuario.city || (usuario.address && usuario.address.city) || ''}</td>
-      <td>${usuario.state || (usuario.address && usuario.address.state) || ''}</td>
+      <td>${usuario.address}</td>
+      <td>${usuario.city}</td>
+      <td>${usuario.state}</td>
+      <td>${usuario.birthDate ? usuario.birthDate.substring(0,10) : ''}</td>
       <td>
-        <button class="edit-btn" onclick="editarUsuario(${usuario.idUsuario || usuario.id})">Editar</button>
-        <button class="delete-btn" onclick="removerUsuario(${usuario.idUsuario || usuario.id})">Remover</button>
+        <button class="edit-btn" onclick="window.location.href='atualizarUsuario.html?id=${usuario.idUsuario || usuario.id}'">Editar</button>
       </td>
     `;
     tabela.appendChild(tr);
   });
 });
-
-async function removerUsuario(id) {
-  if(confirm('Tem certeza que deseja remover este usuário?')) {
-    await apagarUsuario(id);
-    location.reload();
-  }
-}
 
 function editarUsuario(id) {
   // Redirecionar para página de edição (implementar depois)

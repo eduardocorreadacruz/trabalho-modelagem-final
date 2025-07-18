@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Listar Usuários</title>
+  <title>Apagar Usuário</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -16,26 +16,14 @@
       <a href="consultarUsuario.html">Consultar Usuário</a>
     </nav>
   </header>
-  <h2>Lista de Usuários</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Primeiro Nome</th>
-        <th>Sobrenome</th>
-        <th>Idade</th>
-        <th>Email</th>
-        <th>Telefone</th>
-        <th>Endereço</th>
-        <th>Cidade</th>
-        <th>Estado</th>
-        <th>Data de Nascimento</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody id="tabelaUsuarios"></tbody>
-  </table>
+  <h2>Apagar Usuário</h2>
+  <div style="margin-bottom: 16px;">
+    <label>ID do Usuário: <input type="number" id="buscarIdUsuario" min="1" style="width: 80px;"></label>
+    <button type="button" id="btnBuscarUsuario">Buscar</button>
+  </div>
+  <div id="dadosUsuario"></div>
   <div id="mensagem"></div>
-  <script src="listarUsuario.js"></script>
+  <button type="button" id="btnApagarUsuario" style="display:none; background:#c00; color:#fff;">Apagar Usuário</button>
+  <script src="apagarUsuario.js"></script>
 </body>
 </html> 
