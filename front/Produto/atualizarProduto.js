@@ -40,7 +40,7 @@ async function carregarProduto() {
 
 document.getElementById('formAtualizarProduto').addEventListener('submit', async function(event) {
   event.preventDefault();
-  const id = document.getElementById('produtoId').value;
+  let id = document.getElementById('produtoId').value;
   const data = {
     title: document.getElementById('title').value,
     description: document.getElementById('description').value,
