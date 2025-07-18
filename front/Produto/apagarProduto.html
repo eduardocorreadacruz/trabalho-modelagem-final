@@ -16,16 +16,14 @@
       <a href="consultarProduto.html">Consultar Produto</a>
     </nav>
   </header>
-  <div class="container">
-    <h2>Apagar Produto</h2>
-    <form id="formApagarProduto">
-      <label>ID do Produto a apagar:
-        <input type="number" name="id" id="produtoId" required placeholder="Digite o ID do produto">
-      </label>
-      <button type="submit" class="btn btn-danger">Apagar Produto</button>
-    </form>
-    <div id="mensagem"></div>
+  <h2>Apagar Produto</h2>
+  <div style="margin-bottom: 16px;">
+    <label>ID do Produto: <input type="number" id="buscarIdProduto" min="1" style="width: 80px;"></label>
+    <button type="button" id="btnBuscarProduto">Buscar</button>
   </div>
+  <div id="dadosProduto"></div>
+  <div id="mensagem"></div>
+  <button type="button" id="btnApagarProduto" style="display:none; background:#c00; color:#fff;">Apagar Produto</button>
   <script src="apagarProduto.js"></script>
 </body>
 </html> 

@@ -23,6 +23,7 @@ app.put('/compra/:id',compraController.atualizar)
 
 app.post('/produto',produtoController.cadastrar)
 app.get('/produto',produtoController.listar)
+app.get('/produto/:id',produtoController.buscarPorId)
 app.delete('/produto/:id',produtoController.apagar)
 app.put('/produto/:id',produtoController.atualizar)
 
