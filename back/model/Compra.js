@@ -50,10 +50,6 @@ const Compra = db.define('compra',{
         type:DataTypes.STRING(30),
         allowNull:false
     },
-    thumbnail:{
-        type:DataTypes.STRING(60),
-        allowNull:false
-    },
     quantidade: {
         type: DataTypes.INTEGER,
         allowNull: false
