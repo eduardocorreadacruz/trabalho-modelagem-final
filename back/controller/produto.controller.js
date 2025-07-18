@@ -47,7 +47,7 @@ const apagar = async (req, res) => {
     });
     if (dados) {
       await Produto.destroy({ where: {idProduto:id } });
-      res.status(204).json({ message: 'Dados excluídos com sucesso!' });
+      res.status(201).json({ message: 'Dados excluídos com sucesso!' });
     } else {
       res.status(404).json({ message: 'Produto não encontrado!' });
     }

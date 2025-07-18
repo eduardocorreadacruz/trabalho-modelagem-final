@@ -39,7 +39,7 @@
             allowNull:false
         },
         birthDate:{
-            type:DataTypes.STRING(8),
+            type:DataTypes.DATE,
             allowNull:false
         },
 
