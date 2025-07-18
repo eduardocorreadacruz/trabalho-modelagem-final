@@ -4,7 +4,7 @@ const cadastrar = async(req,res)=>{
     const dados = req.body
     try{
         const valores = await Produto.create(dados)
-        res.status(201).json({message:"cadastro do produto realizado com sucesso"})
+        res.status(201).json(valores)
     }
     catch(err){
         console.error("não foi possivel cadastrar o produto",err)
