@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Consultar Produto por ID</title>
+  <link rel="shortcut icon" href="../../Assets/Img/madeleine_favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="../../style.css">
+  <script src="consultarProduto.js" defer></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="../../../index.html">Home</a>
+      <a href="../Cadastrar/cadastrarProduto.html">Cadastrar Produto</a>
+      <a href="../Listar/listarProduto.html">Listar Produtos</a>
+      <a href="../Atualizar/atualizarProduto.html">Atualizar Produto</a>
+      <a href="../Apagar/apagarProduto.html">Apagar Produto</a>
+      <a href="../Consultar/consultarProduto.html">Consultar Produto</a>
+    </nav>
+  </header>
+    <h2>Consultar Produto por ID</h2>
+    <form id="formConsultarProduto">
+      <label>ID do Produto:
+        <input type="number" name="id" id="produtoId" required placeholder="Digite o ID do produto">
+      </label>
+      <button type="submit" class="btn btn-success">Consultar</button>
+    </form>
+    <div id="resultado"></div>
+</body>
+</html> 
