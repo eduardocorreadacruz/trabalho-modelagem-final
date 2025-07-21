@@ -18,8 +18,8 @@ async function carregarCompras() {
         <td>${compra.formaPagamento}</td>
         <td>${compra.status}</td>
         <td>
-          <button onclick="atualizarCompra(${compra.idCompra || compra.id})">Atualizar</button>
-          <button onclick="removerCompra(${compra.idCompra || compra.id})">Remover</button>
+          <button onclick="window.location.href='../Atualizar/atualizarCompra.html?id=${compra.idCompra || compra.id}'">Editar</button>
+          <button onclick="window.location.href='../Apagar/apagarCompra.html?id=${compra.idCompra || compra.id}'">Apagar</button>
         </td>
       `;
       tabela.appendChild(tr);
@@ -27,22 +27,6 @@ async function carregarCompras() {
   } catch (error) {
     document.getElementById('mensagem').innerText = 'Erro ao carregar compras.';
   }
-}
-
-async function removerCompra(id) {
-  if (!confirm('Tem certeza que deseja remover esta compra?')) return;
-  try {
-    const response = await fetch(`http://localhost:3000/compra/${id}`, { method: 'DELETE' });
-    const result = await response.json();
-    alert(result.message || 'Compra removida!');
-    carregarCompras();
-  } catch (error) {
-    alert('Erro ao remover compra.');
-  }
-}
-
-function atualizarCompra(id) {
-  window.location.href = `atualizarCompra.html?id=${id}`;
 }
 
 document.addEventListener('DOMContentLoaded', carregarCompras); 

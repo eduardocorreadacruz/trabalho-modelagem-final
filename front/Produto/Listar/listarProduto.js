@@ -1,9 +1,23 @@
 async function carregarProdutos() {
   const tabela = document.getElementById('tabelaProdutos');
+  const alertaEstoque = document.getElementById('alertaEstoque');
   tabela.innerHTML = '';
+  alertaEstoque.innerHTML = '';
   try {
     const response = await fetch('http://localhost:3000/produto');
     const produtos = await response.json();
+    // Alerta de estoque crítico
+    const produtosCriticos = produtos.filter(p => p.stock < 10);
+    if (produtosCriticos.length > 0) {
+      let alertaHTML = `<div style="border:2px solid red; background:#ffeaea; padding:10px; border-radius:8px; margin-bottom:10px;">
+        <strong>Alerta de Estoque Crítico:</strong><br>
+        <ul style='margin: 8px 0 0 18px;'>`;
+      produtosCriticos.forEach(p => {
+        alertaHTML += `<li><b>${p.title}</b> (Estoque: <b>${p.stock}</b>, Categoria: <b>${p.category}</b>)</li>`;
+      });
+      alertaHTML += '</ul></div>';
+      alertaEstoque.innerHTML = alertaHTML;
+    }
     produtos.forEach(produto => {
       const tr = document.createElement('tr');
       tr.innerHTML = `
@@ -17,8 +31,8 @@ async function carregarProdutos() {
         <td>${produto.brand}</td>
         <td><img src="${produto.thumbnail}" width="50"></td>
         <td>
-          <button onclick="atualizarProduto(${produto.idProduto || produto.id})">Atualizar</button>
-          <button onclick="removerProduto(${produto.idProduto || produto.id})">Remover</button>
+          <button onclick="window.location.href='../Atualizar/atualizarProduto.html?id=${produto.idProduto || produto.id}'">Editar</button>
+          <button onclick="window.location.href='../Apagar/apagarProduto.html?id=${produto.idProduto || produto.id}'">Apagar</button>
         </td>
       `;
       tabela.appendChild(tr);
@@ -26,22 +40,6 @@ async function carregarProdutos() {
   } catch (error) {
     document.getElementById('mensagem').innerText = 'Erro ao carregar produtos.';
   }
-}
-
-async function removerProduto(id) {
-  if (!confirm('Tem certeza que deseja remover este produto?')) return;
-  try {
-    const response = await fetch(`http://localhost:3000/produto/${id}`, { method: 'DELETE' });
-    const result = await response.json();
-    alert(result.message || 'Produto removido!');
-    carregarProdutos();
-  } catch (error) {
-    alert('Erro ao remover produto.');
-  }
-}
-
-function atualizarProduto(id) {
-  window.location.href = `atualizarProduto.html?id=${id}`;
 }
 
 document.addEventListener('DOMContentLoaded', carregarProdutos); 

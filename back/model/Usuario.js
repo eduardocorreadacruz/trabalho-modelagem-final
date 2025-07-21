@@ -19,11 +19,11 @@
             allowNull:false
         },
         email:{
-            type:DataTypes.STRING(30),
+            type:DataTypes.STRING(60), // alterado de 30 para 60
             allowNull:false
         },
         phone:{
-            type:DataTypes.STRING(11),
+            type:DataTypes.STRING(25), // alterado de 11 para 25
             allowNull:false
         },
         address:{

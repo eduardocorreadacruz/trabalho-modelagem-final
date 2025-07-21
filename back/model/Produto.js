@@ -7,11 +7,11 @@ const Produto = db.define('produto',{
         autoIncrement:true
     },
     title:{
-        type:DataTypes.STRING(30),
+        type:DataTypes.STRING(100), // alterado de 30 para 100
         allowNull:false
     },
     description:{
-        type:DataTypes.STRING(30),
+        type:DataTypes.STRING(255), // alterado de 30 para 255
         allowNull:false
     },
     category:{
@@ -35,7 +35,7 @@ const Produto = db.define('produto',{
         allowNull:false
     },
     thumbnail:{
-        type:DataTypes.STRING(60),
+        type:DataTypes.STRING(255), // alterado de 60 para 255
         allowNull:false
     }
 },{

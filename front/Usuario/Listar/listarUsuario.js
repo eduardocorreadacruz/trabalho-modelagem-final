@@ -21,13 +21,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       <td>${usuario.state}</td>
       <td>${usuario.birthDate ? usuario.birthDate.substring(0,10) : ''}</td>
       <td>
-        <button class="edit-btn" onclick="window.location.href='atualizarUsuario.html?id=${usuario.idUsuario || usuario.id}'">Editar</button>
+        <button onclick="window.location.href='../Atualizar/atualizarUsuario.html?id=${usuario.idUsuario || usuario.id}'">Editar</button>
+        <button onclick="window.location.href='../Apagar/apagarUsuario.html?id=${usuario.idUsuario || usuario.id}'">Apagar</button>
       </td>
     `;
     tabela.appendChild(tr);
   });
-});
-
-function editarUsuario(id) {
-  alert('Função de edição em desenvolvimento.');
-} 
+}); 
