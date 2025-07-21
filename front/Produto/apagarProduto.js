@@ -1,4 +1,3 @@
-// Função para buscar produto e exibir dados
 async function buscarProdutoPorId(id) {
   const resp = await fetch(`http://localhost:3000/produto/${id}`);
   if (!resp.ok) return null;

@@ -2,7 +2,7 @@ async function carregarCompras() {
   const tabela = document.getElementById('tabelaCompras');
   tabela.innerHTML = '';
   try {
-    const response = await fetch('http://localhost:3000/compras');
+    const response = await fetch('http://localhost:3000/compra');
     const compras = await response.json();
     compras.forEach(compra => {
       const tr = document.createElement('tr');
@@ -32,7 +32,7 @@ async function carregarCompras() {
 async function removerCompra(id) {
   if (!confirm('Tem certeza que deseja remover esta compra?')) return;
   try {
-    const response = await fetch(`http://localhost:3000/compras/${id}`, { method: 'DELETE' });
+    const response = await fetch(`http://localhost:3000/compra/${id}`, { method: 'DELETE' });
     const result = await response.json();
     alert(result.message || 'Compra removida!');
     carregarCompras();

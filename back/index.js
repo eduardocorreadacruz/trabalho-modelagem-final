@@ -20,6 +20,7 @@ app.post('/compra',compraController.cadastrar)
 app.get('/compra',compraController.listar)
 app.delete('/compra/:id',compraController.apagar)
 app.put('/compra/:id',compraController.atualizar) 
+app.get('/compra/:id',compraController.buscarPorId)
 
 app.post('/produto',produtoController.cadastrar)
 app.get('/produto',produtoController.listar)

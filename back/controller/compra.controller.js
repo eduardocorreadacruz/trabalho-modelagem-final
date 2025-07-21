@@ -57,4 +57,19 @@ const apagar = async (req, res) => {
   }
 };
 
-module.exports = {cadastrar, listar, atualizar, apagar}
+const buscarPorId = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const compra = await Compra.findByPk(id);
+        if (compra) {
+            res.status(200).json(compra);
+        } else {
+            res.status(404).json({ message: 'Compra não encontrada!' });
+        }
+    } catch (err) {
+        console.error('Erro ao buscar compra por ID!', err);
+        res.status(500).json({ message: 'Erro ao buscar compra por ID!' });
+    }
+}
+
+module.exports = {cadastrar, listar, atualizar, apagar, buscarPorId}

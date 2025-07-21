@@ -30,7 +30,6 @@ document.getElementById('btnBuscarProduto').addEventListener('click', function()
   carregarProdutoPorId(id);
 });
 
-// Mantém o carregamento automático por query param
 async function carregarProduto() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');

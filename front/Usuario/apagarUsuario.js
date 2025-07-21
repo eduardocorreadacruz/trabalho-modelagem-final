@@ -1,11 +1,9 @@
-// Função para buscar usuário e exibir dados
 async function buscarUsuarioPorId(id) {
   const resp = await fetch(`http://localhost:3000/usuario/${id}`);
   if (!resp.ok) return null;
   return await resp.json();
 }
 
-// Buscar e exibir usuário ao clicar em Buscar
 const btnBuscar = document.getElementById('btnBuscarUsuario');
 const dadosUsuario = document.getElementById('dadosUsuario');
 const btnApagar = document.getElementById('btnApagarUsuario');
@@ -46,7 +44,6 @@ if (btnBuscar) {
   });
 }
 
-// Apagar usuário ao clicar em Apagar
 if (btnApagar) {
   btnApagar.addEventListener('click', async () => {
     if (!usuarioAtual) return;

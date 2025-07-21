@@ -3,7 +3,6 @@ document.getElementById('formCadastroProduto').addEventListener('submit', async 
     const cadastroProduto = document.getElementById('cadastroProduto');
     const mensagem = document.getElementById('mensagem');
     
-    // Coleta os valores dos campos
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
     const category = document.getElementById('category').value;
@@ -13,7 +12,6 @@ document.getElementById('formCadastroProduto').addEventListener('submit', async 
     const brand = document.getElementById('brand').value;
     const thumbnail = document.getElementById('thumbnail').value;
 
-    // Validação simples
     if (!title || !description || !category || isNaN(price) || isNaN(discountPercentage) || isNaN(stock) || !brand || !thumbnail) {
         alert('Por favor, preencha todos os campos corretamente.');
         return;

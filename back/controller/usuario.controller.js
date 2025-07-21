@@ -2,9 +2,7 @@ const Usuario = require('../model/Usuario')
 
 const cadastrar = async(req,res)=>{
     const dados = req.body
-    // Garante que birthDate está no formato YYYY-MM-DD
     if (dados.birthDate) {
-        // Se vier como 'YYYY-MM-DDTHH:mm:ss' ou 'YYYY-MM-DD HH:mm:ss', pega só a data
         dados.birthDate = dados.birthDate.substring(0, 10);
     }
     try{
@@ -27,21 +25,24 @@ const listar = async (req, res) => {
     }
 };
 
-const atualizar = async (req,res)=>{
-    const id = req.params.id
-    const valores = req.body
-    try{
-        let dados = await Usuario.findByPk(id)
-        if(dados){
-            await Usuario.update(valores, {where: { idUsuario: id}})
-            dados = await Usuario.findByPk(id)
-            res.status(200).json(valores)
-        }else{
-            res.status(404).json({message: 'Usuario não encontrado!'})
+const atualizar = async (req, res) => {
+    const id = req.params.id;
+    const valores = req.body;
+    if (valores.birthDate) {
+        valores.birthDate = valores.birthDate.substring(0, 10);
+    }
+    try {
+        let dados = await Usuario.findByPk(id);
+        if (dados) {
+            await Usuario.update(valores, { where: { idUsuario: id } });
+            dados = await Usuario.findByPk(id);
+            res.status(200).json(dados);
+        } else {
+            res.status(404).json({ message: 'Usuario não encontrado!' });
         }
-    }catch(err){
-        console.error('Erro ao atualizar os dados!',err)
-        res.status(500).json({message: 'Erro ao atualizar os dados!'})
+    } catch (err) {
+        console.error('Erro ao atualizar os dados!', err);
+        res.status(500).json({ message: 'Erro ao atualizar os dados!' });
     }
 }
 

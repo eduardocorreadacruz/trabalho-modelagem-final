@@ -7,13 +7,11 @@ async function atualizarUsuario(id, usuario) {
   return response.json();
 }
 
-// Função para obter parâmetro da URL
 function getQueryParam(param) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(param);
 }
 
-// Preencher formulário ao carregar a página
 window.addEventListener('DOMContentLoaded', async () => {
   const id = getQueryParam('id');
   if (!id) return;
@@ -29,13 +27,11 @@ window.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('address').value = usuario.address;
   document.getElementById('city').value = usuario.city;
   document.getElementById('state').value = usuario.state;
-  // birthDate para input type=date
   if (usuario.birthDate) {
     document.getElementById('birthDate').value = usuario.birthDate.substring(0, 10);
   }
 });
 
-// Submeter atualização
 const form = document.getElementById('formAtualizarUsuario');
 if (form) {
   form.addEventListener('submit', async function(event) {
@@ -61,7 +57,6 @@ if (form) {
   });
 }
 
-// Buscar usuário pelo ID digitado
 const btnBuscar = document.getElementById('btnBuscarUsuario');
 if (btnBuscar) {
   btnBuscar.addEventListener('click', async () => {
