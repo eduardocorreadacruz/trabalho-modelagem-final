@@ -1,16 +1,13 @@
-// Função utilitária para buscar produtos
 async function fetchProdutos() {
   const resp = await fetch('http://localhost:3000/produto');
   return resp.json();
 }
 
-// Função utilitária para buscar usuários
 async function fetchUsuarios() {
   const resp = await fetch('http://localhost:3000/usuario');
   return resp.json();
 }
 
-// Função para filtrar por intervalo de ID e limitar a 10 itens
 function filtrarPorIdEDecimar(arr, idField, idIni, idFim) {
   let filtrado = arr;
   if (idIni) filtrado = filtrado.filter(item => (item[idField] || item.id) >= idIni);
@@ -18,7 +15,6 @@ function filtrarPorIdEDecimar(arr, idField, idIni, idFim) {
   return filtrado.slice(0, 10);
 }
 
-// Gráfico Produto x Estoque
 let chartProdutoEstoque = null;
 async function renderGraficoProdutoEstoque() {
   const produtos = await fetchProdutos();
@@ -56,7 +52,6 @@ async function renderGraficoProdutoEstoque() {
 
 document.getElementById('btnFiltrarGraficoProdutoEstoque').addEventListener('click', renderGraficoProdutoEstoque);
 
-// Gráfico Usuário x Idade
 let chartUsuarioIdade = null;
 async function renderGraficoUsuarioIdade() {
   const usuarios = await fetchUsuarios();
@@ -94,7 +89,6 @@ async function renderGraficoUsuarioIdade() {
 
 document.getElementById('btnFiltrarGraficoUsuarioIdade').addEventListener('click', renderGraficoUsuarioIdade);
 
-// Renderizar gráficos ao abrir a dashboard (com todos os dados)
 document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('graficoProdutoEstoque')) renderGraficoProdutoEstoque();
   if (document.getElementById('graficoUsuarioIdade')) renderGraficoUsuarioIdade();
