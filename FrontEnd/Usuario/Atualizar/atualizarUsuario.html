@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Atualizar Usuário</title>
+    <link rel="shortcut icon" href="../../Assets/Img/madeleine_favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../style.css">
+    <script src="atualizarUsuario.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../../../index.html">Home</a>
+            <a href="../Cadastrar/cadastrarUsuario.html">Cadastrar Usuário</a>
+            <a href="../Listar/listarUsuario.html">Listar Usuários</a>
+            <a href="../Atualizar/atualizarUsuario.html">Atualizar Usuário</a>
+            <a href="../Apagar/apagarUsuario.html">Apagar Usuário</a>
+            <a href="../Consultar/consultarUsuario.html">Consultar Usuário</a>
+        </nav>
+    </header>
+    <h2>Atualizar Usuário</h2>
+
+    <div style="margin-bottom: 16px;">
+        <label>ID do Usuário: <input type="number" id="buscarIdUsuario" min="1" placeholder="digite um ID"></label>
+        <button type="button" id="btnBuscarUsuario">Buscar</button>
+    </div>
+
+    <form id="formAtualizarUsuario" style="display: none;"><br><br>
+        <input type="hidden" id="usuarioId"> <label>Primeiro Nome: <input type="text" id="firstName" required></label><br><br>
+        <label>Sobrenome:</label>
+        <input type="text" id="lastName" required><br><br>
+        <label>Idade:</label> 
+        <input type="number" id="age" required><br><br>
+        <label>Email:</label>
+        <input type="email" id="email"><br><br>
+        <label>Telefone:</label> 
+        <input type="text" id="phone" required><br><br>
+        <label>Endereço:</label>
+        <input type="text" id="address" required><br><br>
+        <label>Cidade:</label>
+        <input type="text" id="city" required><br><br>
+        <label>Estado:</label>
+        <input type="text" id="state" required><br><br>
+        <label>Data de Nascimento:</label>
+        <input type="date" id="birthDate" required><br><br>
+        <button type="submit" id="btnAtualizarUsuario">Atualizar</button><br>
+    </form>
+    <div id="mensagem"></div>
+</body>
+</html>
