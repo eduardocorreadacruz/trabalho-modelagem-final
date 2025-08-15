@@ -20,7 +20,7 @@ const listar = async (req, res) => {
         console.error("não foi possível listar os usuários", err)
         res.status(500).json({ message: "não foi possível listar os usuários" })
     }
-};
+}
 
 const atualizar = async (req,res)=>{
     const id = req.params.id
@@ -44,7 +44,7 @@ const apagar = async (req, res) => {
   const id = req.params.id
   try {
     const dados = await Produto.findByPk(id, {
-    });
+    })
     if (dados) {
       await Produto.destroy({ where: {idProduto:id } })
       res.status(201).json({ message: 'Dados excluídos com sucesso!' })
@@ -55,7 +55,7 @@ const apagar = async (req, res) => {
     console.error('Erro ao apagar os dados!', err);
     res.status(500).json({ message: 'Erro ao apagar os dados!' })
   }
-};
+}
 
 const buscarPorId = async (req, res) => {
     const id = req.params.id

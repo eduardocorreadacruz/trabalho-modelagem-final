@@ -27,14 +27,10 @@ const listar = async (req, res) => {
 
 const atualizar = async (req, res) => {
     const id = req.params.id
-    const valores = req.body
-    if (valores.birthDate) {
-        valores.birthDate = valores.birthDate.substring(0, 10)
-    }
     try {
         let dados = await Usuario.findByPk(id)
         if (dados) {
-            await Usuario.update(valores, { where: { idUsuario: id } })
+            await Usuario.update({where: { idUsuario: id } })
             dados = await Usuario.findByPk(id)
             res.status(200).json(dados)
         } else {

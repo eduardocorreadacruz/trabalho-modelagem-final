@@ -20,7 +20,7 @@ const listar = async (req, res) => {
         console.error("não foi possível listar as compras", err)
         res.status(500).json({ message: "não foi possível listar as compras" })
     }
-};
+}
 
 const atualizar = async (req,res)=>{
     const id = req.params.id
