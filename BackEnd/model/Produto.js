@@ -53,5 +53,4 @@ module.exports = Produto
 // ● Percentual de desconto (discountPercentage)
 // ● Estoque (stock)
 // ● Marca (brand)
-
 // ● Imagem (thumbnail) - URL da imagem

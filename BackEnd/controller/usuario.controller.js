@@ -26,21 +26,26 @@ const listar = async (req, res) => {
 }
 
 const atualizar = async (req, res) => {
-    const id = req.params.id
+    const id = req.params.id 
+    const novosDados = req.body 
+
     try {
-        let dados = await Usuario.findByPk(id)
+        let dados = await Usuario.findByPk(id) 
+
         if (dados) {
-            await Usuario.update({where: { idUsuario: id } })
-            dados = await Usuario.findByPk(id)
-            res.status(200).json(dados)
+            await Usuario.update(novosDados, { where: { idUsuario: id } }) 
+            
+            // Opcional: buscar e retornar o usuário atualizado
+            dados = await Usuario.findByPk(id) 
+            res.status(200).json(dados) 
         } else {
-            res.status(404).json({ message: 'Usuario não encontrado!' })
+            res.status(404).json({ message: 'Usuario não encontrado!' }) 
         }
     } catch (err) {
-        console.error('Erro ao atualizar os dados!', err);
-        res.status(500).json({ message: 'Erro ao atualizar os dados!' })
+        console.error('Erro ao atualizar os dados!', err) 
+        res.status(500).json({ message: 'Erro ao atualizar os dados!' }) 
     }
-}
+} 
 
 const apagar = async (req, res) => {
   const id = req.params.id
@@ -53,7 +58,7 @@ const apagar = async (req, res) => {
       res.status(404).json({ message: 'Usuario não encontrado!' })
     }
   } catch (err) {
-    console.error('Erro ao apagar os dados!', err);
+    console.error('Erro ao apagar os dados!', err) 
     res.status(500).json({ message: 'Erro ao apagar os dados!' })
   }
 }
@@ -63,7 +68,7 @@ const buscarPorId = async (req, res) => {
     try {
         const usuario = await Usuario.findByPk(id)
         if (usuario) {
-            res.status(200).json(usuario);
+            res.status(200).json(usuario) 
         } else {
             res.status(404).json({ message: 'Usuário não encontrado!' })
         }

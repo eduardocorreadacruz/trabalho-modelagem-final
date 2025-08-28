@@ -45,7 +45,7 @@ h1 {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 3200px;
   margin: 2rem auto;
   background: white;
   border-radius: var(--border-radius);

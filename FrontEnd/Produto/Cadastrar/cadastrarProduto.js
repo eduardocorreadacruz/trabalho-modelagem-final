@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Opcional: exiba o resultado para o usuário antes de enviar
         console.log(`Preço original: R$${price}`);
-        console.log(`Valor do desconto: R$${valorDoDesconto.toFixed(2)}`);
-        console.log(`Preço final: R$${precoFinal.toFixed(2)}`);
+        console.log(`Valor do desconto: R$${valorDoDesconto}`);
+        console.log(`Preço final: R$${precoFinal}`);
         // --- Fim do Cálculo ---
 
         const novoProduto = {
@@ -54,12 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const dados = await response.json();
-            mensagemDiv.textContent = `O produto "${dados.title}" foi cadastrado com sucesso! Preço final: R$${dados.precoFinal.toFixed(2)}`;
+            mensagemDiv.textContent = `O produto "${dados.title}" foi cadastrado com sucesso! Preço final: R$${dados.precoFinal}`;
             formCadastroProduto.reset();
 
         } catch (error) {
-            console.error('Erro ao cadastrar o produto:', error);
-            mensagemDiv.textContent = `Erro ao cadastrar: ${error.message}`;
+            console.error('Erro ao cadastrar o produto:', error)
+            mensagemDiv.textContent = `Erro ao cadastrar: ${error.message}`
         }
-    });
-});
+    })
+})

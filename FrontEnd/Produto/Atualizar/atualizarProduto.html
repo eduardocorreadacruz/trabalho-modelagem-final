@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Atualizar Produto</title>
-  <link rel="shortcut icon" href="../../Assets/Img/madeleine_favicon.png" type="image/x-icon">
-  <link rel="stylesheet" href="../../style.css">
-  <script src="atualizarProduto.js" defer></script>
+    <meta charset="UTF-8">
+    <title>Atualizar Produto</title>
+    <link rel="shortcut icon" href="../../Assets/Img/madeleine_favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../style.css">
+    <script src="atualizarProduto.js" defer></script>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="../../../index.html">Home</a>
-      <a href="../Cadastrar/cadastrarProduto.html">Cadastrar Produto</a>
-      <a href="../Listar/listarProduto.html">Listar Produtos</a>
-      <a href="../Atualizar/atualizarProduto.html">Atualizar Produto</a>
-      <a href="../Apagar/apagarProduto.html">Apagar Produto</a>
-      <a href="../Consultar/consultarProduto.html">Consultar Produto</a>
-    </nav>
-  </header>
-  <div class="container">
+    <header>
+        <nav>
+            <a href="../../../index.html">Home</a>
+            <a href="../Cadastrar/cadastrarProduto.html">Cadastrar Produtos</a>
+            <a href="../Listar/listarProduto.html">Listar Produtos</a>
+            <a href="../Atualizar/atualizarProduto.html">Atualizar Produtos</a>
+            <a href="../Apagar/apagarProduto.html">Apagar Produtos</a>
+            <a href="../Consultar/consultarProduto.html">Consultar Produtos</a>
+        </nav>
+    </header>
     <h2>Atualizar Produto</h2>
+
     <div style="margin-bottom: 16px;">
-      <label>ID do Produto: <input type="number" id="buscarIdProduto" placeholder="Digite o ID"></label>
-      <button type="button" id="btnBuscarProduto">Buscar</button>
+        <label>ID do Produto: <input type="number" id="buscarIdProduto" min="1" placeholder="digite um ID"></label>
+        <button type="button" id="btnBuscarProduto">Buscar</button>
     </div>
-    <form id="formAtualizarProduto">
-      <input type="hidden" name="id" id="produtoId">
-      <label>Título: <input type="text" name="title" id="title" required></label>
-      <label>Descrição: <input type="text" name="description" id="description" required></label>
-      <label>Categoria: <input type="text" name="category" id="category" required></label>
-      <label>Preço: <input type="number" step="0.01" name="price" id="price" required></label>
-      <label>Percentual de Desconto: <input type="number" step="0.01" name="discountPercentage" id="discountPercentage" required></label>
-      <label>Estoque: <input type="number" name="stock" id="stock" required></label>
-      <label>Marca: <input type="text" name="brand" id="brand" required></label>
-      <label>Imagem (URL): <input type="text" name="thumbnail" id="thumbnail" required></label>
-      <button type="submit">Atualizar</button>
+
+    <form id="formAtualizarProduto" style="display: none;"><br><br>
+        <input type="hidden" id="produtoId"> <label>Título:</label>
+        <input type="text" id="title" required><br><br>
+        <label>Descrição:</label> 
+        <textarea id="description" required></textarea><br><br> <label>Categoria:</label>
+        <input type="text" id="category" required><br><br> <label>Preço:</label> 
+        <input type="number" id="price" step="0.01" required><br><br> <label>Percentual de Desconto:</label>
+        <input type="number" id="discountPercentage" step="0.01" required><br><br> <label>Estoque:</label>
+        <input type="number" id="stock" required><br><br> <label>Marca:</label>
+        <input type="text" id="brand" required><br><br>
+        <label>Imagem (URL):</label>
+        <input type="url" id="thumbnail" required><br><br> <button type="submit" id="btnAtualizarProduto">Atualizar</button><br>
     </form>
     <div id="mensagem"></div>
-  </div>
 </body>
-</html> 
+</html>

@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const id = buscarIdInput.value
 
     try {
-      const response = await fetch(`http://localhost:3000/usuario/${idUsuario}`)
+      const response = await fetch(`http://localhost:3000/usuario/${id}`)
       
       if (!response.ok) {
         throw new Error('Usuário não encontrado.')
@@ -28,15 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
       
       dadosUsuarioDiv.innerHTML = `
             <h3>Detalhes do Usuário</h3>
-            <td>${usuario.idUsuario}</td><br>
+            <td>ID: ${usuario.idUsuario}</td><br>
             <td>Nome: ${usuario.firstName} ${usuario.lastName}</td><br>
             <td>Idade: ${usuario.age}</td><br>
             <td>Email: ${usuario.email}</td><br>
             <td>Telefone: ${usuario.phone}</td><br>
             <td>Endereço: ${usuario.address}</td><br>
             <td>Cidade: ${usuario.city}</td><br>
-            <td>Estado${usuario.state}</td><br>
-            <td>Data de Nascimento:${usuario.birthDate}</td><br>
+            <td>Estado: ${usuario.state}</td><br>
+            <td>Data de Nascimento: ${usuario.birthDate}</td><br>
             
         `
     } catch (err) {

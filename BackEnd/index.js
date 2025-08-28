@@ -16,34 +16,38 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(cors())
 
-app.post('/compra',compraController.cadastrar)
-app.get('/compra',compraController.listar)
-app.delete('/compra/:id',compraController.apagar)
-app.put('/compra/:id',compraController.atualizar) 
-app.get('/compra/:id',compraController.buscarPorId)
+// Rotas para Compra
+app.post('/compra', compraController.cadastrar)
+app.get('/compra', compraController.listar)
+app.get('/compra/:id', compraController.buscarPorId)
+app.put('/compra/:id', compraController.atualizar)
+app.delete('/compra/:id', compraController.apagar)
 
-app.post('/produto',produtoController.cadastrar)
-app.get('/produto',produtoController.listar)
-app.delete('/produto/:id',produtoController.apagar)
-app.put('/produto/:id',produtoController.atualizar)
-app.get('/produto/:id',produtoController.buscarPorId)
+// Rotas para Produto
+app.post('/produto', produtoController.cadastrar)
+app.get('/produto', produtoController.listar)
+app.get('/produto/:id', produtoController.buscarPorId)
+app.put('/produto/:id', produtoController.atualizar)
+app.delete('/produto/:id', produtoController.apagar)
 
-app.post('/usuario',usuarioController.cadastrar)
-app.get('/usuario',usuarioController.listar)
-app.delete('/usuario/:id',usuarioController.apagar)
-app.put('/usuario/:id',usuarioController.atualizar)
-app.get('/usuario/:id',usuarioController.buscarPorId)
+// Rotas para Usuário
+app.post('/usuario', usuarioController.cadastrar)
+app.get('/usuario', usuarioController.listar)
+app.get('/usuario/:id', usuarioController.buscarPorId)
+app.put('/usuario/:id', usuarioController.atualizar)
+app.delete('/usuario/:id', usuarioController.apagar)
 
-app.get('/',(req,res)=>{
-    res.status(200).json({message:'aplicação rodando!'})
+
+app.get('/', (req, res) => {
+    res.status(200).json({message: 'aplicação rodando!'})
 })
 
 conn.sync()
-    .then(()=>{
-        app.listen(port,hostname,()=>{
+    .then(() => {
+        app.listen(port, hostname, () => {
             console.log(`servidor rodando em http://${hostname}:${port}`)
         })
     })
-.catch((err)=>{
-        console.error('não foi possivel rodar o servidor!',err)
+    .catch((err) => {
+        console.error('não foi possivel rodar o servidor!', err)
     })

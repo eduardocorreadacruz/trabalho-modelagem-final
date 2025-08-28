@@ -1,44 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Atualizar Compra</title>
-  <link rel="shortcut icon" href="../../Assets/Img/madeleine_favicon.png" type="image/x-icon">
-  <link rel="stylesheet" href="../../style.css">
-  <script src="atualizarCompra.js" defer></script>
+    <meta charset="UTF-8">
+    <title>Atualizar Compra</title>
+    <link rel="shortcut icon" href="../../Assets/Img/madeleine_favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../style.css">
+    <script src="atualizarCompra.js" defer></script>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="../../../index.html">Home</a>
-      <a href="../Cadastrar/cadastrarCompra.html">Cadastrar Compras</a>
-      <a href="../Listar/listarCompra.html">Listar Compras</a>
-      <a href="../Atualizar/atualizarCompra.html">Atualizar Compras</a>
-      <a href="../Apagar/apagarCompra.html">Apagar Compras</a>
-    </nav>
-  </header>
-  <div class="container">
-    <h2>Atualizar Compra</h2>
-    <form id="formBuscarCompra" style="margin-bottom: 16px;">
-      <label>ID da Compra:
-        <input type="number" name="idBusca" id="idBusca" required placeholder="Digite o ID da compra">
-        <button type="submit">Buscar</button>
-      </label>
-    </form>
-    <form id="formAtualizarCompra">
-      <input type="hidden" name="id" id="compraId">
-      <label>ID Usuário: <input type="number" name="idUsuario" id="idUsuario" required></label>
-      <label>ID Produto: <input type="number" name="idProduto" id="idProduto" required></label>
-      <label>Quantidade: <input type="number" name="quantidade" id="quantidade" required></label>
-      <label>Data da Compra: <input type="date" name="dataCompra" id="dataCompra" required></label>
-      <label>Preço Unitário: <input type="number" step="0.01" name="precoUnitario" id="precoUnitario" required></label>
-      <label>Desconto Aplicado (%): <input type="number" step="0.01" name="descontoAplicado" id="descontoAplicado" required></label>
-      <label>Preço Final: <input type="number" step="0.01" name="precoFinal" id="precoFinal" required></label>
-      <label>Forma de Pagamento: <input type="text" name="formaPagamento" id="formaPagamento" required></label>
-      <label>Status: <input type="text" name="status" id="status" required></label>
-      <button type="submit">Atualizar</button>
-    </form>
-    <div id="mensagem"></div>
-  </div>
+    <header>
+        <nav>
+            <a href="../../../index.html">Home</a>
+            <a href="../Cadastrar/cadastrarCompra.html">Cadastrar Compras</a>
+            <a href="../Listar/listarCompra.html">Listar Compras</a>
+            <a href="../Atualizar/atualizarCompra.html">Atualizar Compras</a>
+            <a href="../Apagar/apagarCompra.html">Apagar Compras</a>
+            <a href="../Consultar/consultarCompra.html">Consultar Compras</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Atualizar Compra</h2>
+
+        <div style="margin-bottom: 16px;">
+            <label>ID da Compra: <input type="number" id="buscarIdCompra" min="1" placeholder="digite o ID"></label>
+            <button type="button" id="btnBuscarCompra">Buscar</button>
+        </div>
+
+        <form id="formAtualizarCompra" style="display: none;">
+            <input type="hidden" id="compraId">
+            <br><br>
+            <label>ID Usuário: <input type="number" id="idUsuario" required></label><br><br>
+            <label>ID Produto: <input type="number" id="idProduto" required></label><br><br>
+            <label>Quantidade: <input type="number" id="quantidade" required></label><br><br>
+            <label>Data da Compra: <input type="date" id="dataCompra" required></label><br><br>
+            <label>Preço Unitário: <input type="number" step="0.01" id="precoUnitario" required></label><br><br>
+            <label>Desconto Aplicado (%): <input type="number" step="0.01" id="descontoAplicado"></label><br><br>
+            <label>Preço Final: <input type="number" step="0.01" id="precoFinal" readonly required></label><br><br>
+    
+            <label>Forma de Pagamento:
+                <select id="formaPagamento" required>
+                    <option value="">Selecione</option>
+                    <option value="Crédito">Crédito</option>
+                    <option value="PayPal">PayPal</option>
+                    <option value="Pix">Pix</option>
+                </select>
+            </label><br><br>
+    
+            <label>Status:
+                <select id="status" required>
+                    <option value="">Selecione</option>
+                    <option value="Pendente">Pendente</option>
+                    <option value="Pago">Pago</option>
+                    <option value="Cancelado">Cancelado</option>
+                </select>
+            </label><br><br>
+
+            <button type="submit" id="btnAtualizarCompra">Atualizar</button>
+        </form>
+        <div id="mensagem"></div>
+    </div>
 </body>
-</html> 
+</html>

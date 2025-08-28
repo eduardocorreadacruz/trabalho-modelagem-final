@@ -50,7 +50,6 @@
 
     module.exports = Usuario
 
-
     // ● ID (id)
     // ● Primeiro nome (firstName)
     // ● Sobrenome (lastName)

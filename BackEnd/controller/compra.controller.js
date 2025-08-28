@@ -44,7 +44,7 @@ const apagar = async (req, res) => {
   const id = req.params.id
   try {
     const dados = await Compra.findByPk(id, {
-    });
+    }) 
     if (dados) {
       await Compra.destroy({ where: {idCompra:id } })
       res.status(201).json({ message: 'Dados excluídos com sucesso!' })
@@ -52,7 +52,7 @@ const apagar = async (req, res) => {
       res.status(404).json({ message: 'Compra não encontrado!' })
     }
   } catch (err) {
-    console.error('Erro ao apagar os dados!', err);
+    console.error('Erro ao apagar os dados!', err) 
     res.status(500).json({ message: 'Erro ao apagar os dados!' })
   }
 }
@@ -67,7 +67,7 @@ const buscarPorId = async (req, res) => {
             res.status(404).json({ message: 'Compra não encontrada!' })
         }
     } catch (err) {
-        console.error('Erro ao buscar compra por ID!', err);
+        console.error('Erro ao buscar compra por ID!', err) 
         res.status(500).json({ message: 'Erro ao buscar compra por ID!' })
     }
 }
