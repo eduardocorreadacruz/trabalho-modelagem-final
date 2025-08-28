@@ -1,65 +1,75 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const formCadastroProduto = document.getElementById('formCadastroProduto');
-    const mensagemDiv = document.getElementById('mensagem');
+    const form = document.getElementById('formCadastroProduto') 
+    const mensagemDiv = document.getElementById('mensagem') 
+    const categoriaSelect = document.getElementById('categoria') 
 
-    formCadastroProduto.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        mensagemDiv.textContent = '';
-
-        const title = document.getElementById('title').value;
-        const description = document.getElementById('description').value;
-        const category = document.getElementById('category').value;
-        const price = parseFloat(document.getElementById('price').value);
-        const discountPercentage = parseFloat(document.getElementById('discountPercentage').value);
-        const stock = parseInt(document.getElementById('stock').value);
-        const brand = document.getElementById('brand').value;
-        const thumbnail = document.getElementById('thumbnail').value;
-        
-        // --- Cálculo da Porcentagem de Desconto ---
-        const valorDoDesconto = (price * discountPercentage) / 100;
-        const precoFinal = price - valorDoDesconto;
-
-        // Opcional: exiba o resultado para o usuário antes de enviar
-        console.log(`Preço original: R$${price}`);
-        console.log(`Valor do desconto: R$${valorDoDesconto}`);
-        console.log(`Preço final: R$${precoFinal}`);
-        // --- Fim do Cálculo ---
-
-        const novoProduto = {
-            title: title,
-            description: description,
-            category: category,
-            price: price, // Preço original
-            discountPercentage: discountPercentage,
-            valorDoDesconto: valorDoDesconto, // Novo campo
-            precoFinal: precoFinal, // Novo campo
-            stock: stock,
-            brand: brand,
-            thumbnail: thumbnail
-        };
-
+    // Função busca e preenche a lista de categorias
+    const carregarCategorias = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/produto`, {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(novoProduto)
-            });
-
+            const response = await fetch('https://dummyjson.com/products/categories') 
+            
             if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || 'Erro ao cadastrar o produto.');
+                throw new Error('Não foi possível carregar as categorias.') 
             }
-
-            const dados = await response.json();
-            mensagemDiv.textContent = `O produto "${dados.title}" foi cadastrado com sucesso! Preço final: R$${dados.precoFinal}`;
-            formCadastroProduto.reset();
+            
+            const categorias = await response.json() 
+            
+            // Adiciona as categorias ao <select>
+            categorias.forEach(categoria => {
+                const option = document.createElement('option') 
+                option.value = categoria 
+                option.textContent = categoria 
+                categoriaSelect.appendChild(option) 
+            }) 
 
         } catch (error) {
-            console.error('Erro ao cadastrar o produto:', error)
-            mensagemDiv.textContent = `Erro ao cadastrar: ${error.message}`
+            console.error('Erro ao carregar categorias:', error) 
+            const option = document.createElement('option') 
+            option.textContent = 'Erro ao carregar categorias' 
+            categoriaSelect.appendChild(option) 
         }
-    })
-})
+    } 
+
+    // Chama a função para carregar as categorias assim que a página é carregada
+    carregarCategorias() 
+
+    // Adiciona o event listener para o envio do formulário
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault() 
+
+        // Coleta os dados do formulário
+        const novoProduto = {
+            title: form.title.value,
+            description: form.description.value,
+            price: parseFloat(form.price.value),
+            category: form.category.value,
+            stock: parseInt(form.stock.value),
+        } 
+
+        try {
+            // Envia a requisição POST para a sua API local (json-server)
+            const response = await fetch('http://localhost:3000/products', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(novoProduto),
+            }) 
+
+            if (!response.ok) {
+                const errorData = await response.json() 
+                throw new Error(errorData.message || 'Erro ao cadastrar o produto.') 
+            }
+
+            const resultado = await response.json() 
+            mensagemDiv.textContent = `Produto "${resultado.title}" cadastrado com sucesso! ID: ${resultado.id}` 
+            mensagemDiv.style.color = 'green' 
+            form.reset()  
+            
+        } catch (error) {
+            console.error('Erro:', error) 
+            mensagemDiv.textContent = `Erro: ${error.message}` 
+            mensagemDiv.style.color = 'red' 
+        }
+    }) 
+}) 

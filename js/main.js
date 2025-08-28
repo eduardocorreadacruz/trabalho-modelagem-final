@@ -12,7 +12,7 @@ function filtrarPorIdEDecimar(arr, idField, idIni, idFim) {
   let filtrado = arr
   if (idIni) filtrado = filtrado.filter(item => (item.id) >= idIni)
   if (idFim) filtrado = filtrado.filter(item => (item.id) <= idFim)
-  return filtrado.slice(0, 10);
+  return filtrado.slice(0, 10) 
 }
 
 let chartProdutoEstoque = null
@@ -44,9 +44,9 @@ async function renderGraficoProdutoEstoque() {
   })
 }
 
-document.getElementById('btnFiltrarGraficoProdutoEstoque').addEventListener('click', renderGraficoProdutoEstoque);
+document.getElementById('btnFiltrarGraficoProdutoEstoque').addEventListener('click', renderGraficoProdutoEstoque) 
 
-let chartUsuarioIdade = null;
+let chartUsuarioIdade = null 
 async function renderGraficoUsuarioIdade() {
   const usuarios = await fetchUsuarios()
   const idIni = parseInt(document.getElementById('graficoUsuarioIdadeIdIni').value)
@@ -71,12 +71,12 @@ async function renderGraficoUsuarioIdade() {
         legend: { display: true },
       },
     }
-  });
+  }) 
 }
 
-document.getElementById('btnFiltrarGraficoUsuarioIdade').addEventListener('click', renderGraficoUsuarioIdade);
+document.getElementById('btnFiltrarGraficoUsuarioIdade').addEventListener('click', renderGraficoUsuarioIdade) 
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (document.getElementById('graficoProdutoEstoque')) renderGraficoProdutoEstoque();
-  if (document.getElementById('graficoUsuarioIdade')) renderGraficoUsuarioIdade();
-}); 
+  if (document.getElementById('graficoProdutoEstoque')) renderGraficoProdutoEstoque() 
+  if (document.getElementById('graficoUsuarioIdade')) renderGraficoUsuarioIdade() 
+})  

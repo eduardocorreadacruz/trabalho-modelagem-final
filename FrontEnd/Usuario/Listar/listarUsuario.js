@@ -1,23 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Seleciona os elementos do HTML que vamos usar
-  const tabelaUsuarios = document.getElementById('tabelaUsuarios');
-  const mensagemDiv = document.getElementById('mensagem');
+  const tabelaUsuarios = document.getElementById('tabelaUsuarios') 
+  const mensagemDiv = document.getElementById('mensagem') 
 
   const listarUsuarios = async () => {
     try {
-      const response = await fetch('http://localhost:3000/usuario');
+      const response = await fetch('http://localhost:3000/usuario') 
 
       if (!response.ok) {
-        throw new Error('Não foi possível carregar a lista de usuários.');
+        throw new Error('Não foi possível carregar a lista de usuários.') 
       }
 
-      const usuarios = await response.json();
+      const usuarios = await response.json() 
       
-      tabelaUsuarios.innerHTML = '';
+      tabelaUsuarios.innerHTML = '' 
       
       if (usuarios.length > 0) {
         usuarios.forEach(usuario => {
-          const row = tabelaUsuarios.insertRow();
+          const row = tabelaUsuarios.insertRow() 
           row.innerHTML = `
             <td>${usuario.idUsuario}</td>
             <td>${usuario.firstName}</td>
@@ -41,5 +41,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  listarUsuarios();
+  listarUsuarios() 
 })

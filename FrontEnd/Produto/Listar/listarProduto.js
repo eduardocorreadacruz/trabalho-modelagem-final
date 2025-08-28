@@ -1,22 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const tabelaProdutos = document.getElementById('tabelaProdutos');
-  const mensagemDiv = document.getElementById('mensagem');
+  const tabelaProdutos = document.getElementById('tabelaProdutos') 
+  const mensagemDiv = document.getElementById('mensagem') 
 
   const listarProdutos = async () => {
     try {
-      const response = await fetch('http://localhost:3000/produto');
+      const response = await fetch('http://localhost:3000/produto') 
 
       if (!response.ok) {
-        throw new Error('Não foi possível carregar a lista de produtos.');
+        throw new Error('Não foi possível carregar a lista de produtos.') 
       }
 
-      const produtos = await response.json();
+      const produtos = await response.json() 
       
-      tabelaProdutos.innerHTML = '';
+      tabelaProdutos.innerHTML = '' 
       
       if (produtos.length > 0) {
         produtos.forEach(produto => {
-          const row = tabelaProdutos.insertRow();
+          const row = tabelaProdutos.insertRow() 
           row.innerHTML = `
 
             <td>${produto.idProduto}</td>
@@ -40,5 +40,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  listarProdutos();
+  listarProdutos() 
 })

@@ -1,0 +1,66 @@
+# Trabalho de Modelagem Final
+
+Este é um back-end desenvolvido para simular e automatizar a criação de dados para um e-commerce. A ferramenta foi projetada para testes e desenvolvimento, gerando um banco de dados completo e realista sem a necessidade de inserção manual.
+
+Basicamente, o sistema limpa todas as tabelas, conecta-se a uma API externa (DummyJSON) para buscar informações de usuários e produtos e, em seguida, simula o histórico de compras. Ele gera compras aleatórias, combinando usuários e produtos, e calcula automaticamente campos como o preço final (aplicando descontos), a forma de pagamento (escolhe uma aleatoriamente, como PIX ou cartão) e o status do pedido. No fim, o projeto entrega um banco de dados robusto e pronto para ser usado por um front-end.
+
+---
+
+### Tecnologias Utilizadas
+
+* **Node.js**: Ambiente de execução para o JavaScript do lado do servidor.
+* **Express**: Framework para construir o servidor web de forma simples e eficiente.
+* **Sequelize**: ORM (Mapeador Objeto-Relacional) que facilita a comunicação com o banco de dados MySQL.
+* **MySQL**: Sistema de gerenciamento de banco de dados relacional.
+* **CORS**: Middleware para permitir requisições de diferentes domínios, essencial para a comunicação com o front-end.
+* **Moment.js**: Biblioteca para manipulação e formatação de datas.
+* **dotenv**: Módulo para carregar variáveis de ambiente e gerenciar informações sensíveis, como as credenciais do banco de dados.
+* **API DummyJSON**: Fonte de dados externa utilizada para popular o sistema.
+
+---
+
+### Funcionalidades
+
+* **Sincronização de Banco de Dados**: Automatiza a criação e o preenchimento das tabelas.
+* **População de Dados**: Puxa informações de usuários e produtos de uma API.
+* **Simulação de Compras**: Gera um histórico de compras aleatório e realista.
+* **Cálculos Automáticos**: Calcula o preço final de cada compra com base nos descontos.
+* **Atribuição de Metadados**: Adiciona informações como forma de pagamento e status da entrega a cada transação.
+
+---
+
+### Endpoints da API
+
+* `GET /api/usuarios` - Lista todos os usuários.
+* `POST /api/login` - Realiza o login de um usuário.
+* `PUT /api/usuario/:id` - Atualiza os dados de um usuário.
+* `GET /api/produtos` - Lista todos os produtos.
+* `GET /api/produtos/:id` - Retorna os detalhes de um produto específico.
+* `POST /api/produtos` - Adiciona um novo produto.
+* `PUT /api/produtos/:id` - Atualiza as informações de um produto existente.
+* `DELETE /api/produtos/:id` - Remove um produto do catálogo.
+* `GET /api/compras` - Retorna o histórico de todas as compras.
+* `GET /api/compras/:id` - Retorna os detalhes de uma compra específica.
+* `POST /api/compras` - Cria uma nova compra.
+* `GET /api/usuarios/:id/compras` - Retorna o histórico de compras de um usuário específico.
+
+---
+
+### Instalação
+
+```bash
+# Clone o repositório
+git clone [https://github.com/seuusuario/seuprojeto.git](https://github.com/seuusuario/seuprojeto.git)
+
+# Entre na pasta do projeto
+cd TRABALHO-MODELAGEM-FINAL
+
+# Instale as dependências do backend
+cd BackEnd
+npm install
+
+# Sincronize o banco de dados
+node sync.js
+
+# Inicie o servidor
+node index.js

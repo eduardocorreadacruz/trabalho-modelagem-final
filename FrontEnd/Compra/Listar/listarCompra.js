@@ -1,25 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Seleciona os elementos do HTML que vamos usar
-    const tabelaCompras = document.getElementById('tabelaCompras');
-    const mensagemDiv = document.getElementById('mensagem');
+    const tabelaCompras = document.getElementById('tabelaCompras') 
+    const mensagemDiv = document.getElementById('mensagem') 
 
     const listarCompras = async () => {
         try {
-            const response = await fetch('http://localhost:3000/compra');
+            const response = await fetch('http://localhost:3000/compra') 
 
             if (!response.ok) {
-                // Lança um erro se a resposta não for 200 OK
-                throw new Error('Não foi possível carregar a lista de compras.');
+                // Lança um erro se a resposta não for 200
+                throw new Error('Não foi possível carregar a lista de compras.') 
             }
 
-            const compras = await response.json();
+            const compras = await response.json() 
             
             // Limpa o conteúdo da tabela antes de preenchê-la
-            tabelaCompras.innerHTML = '';
+            tabelaCompras.innerHTML = '' 
             
             if (compras.length > 0) {
                 compras.forEach(compra => {
-                    const row = tabelaCompras.insertRow();
+                    const row = tabelaCompras.insertRow() 
                     row.innerHTML = `
                         <td>${compra.idCompra}</td>
                         <td>${compra.idUsuario}</td>
@@ -35,19 +35,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             <button onclick="window.location.href='../Atualizar/atualizarCompra.html?id=${compra.idCompra}'">Editar</button>
                             <button onclick="window.location.href='../Apagar/apagarCompra.html?id=${compra.idCompra}'">Apagar</button>
                         </td>
-                    `;
-                });
-                mensagemDiv.textContent = ''; // Limpa a mensagem se a lista for carregada
+                    ` 
+                }) 
+                mensagemDiv.textContent = ''  // Limpa a mensagem se a lista for carregada
             } else {
-                mensagemDiv.textContent = 'Nenhuma compra encontrada.';
-                mensagemDiv.style.color = 'orange';
+                mensagemDiv.textContent = 'Nenhuma compra encontrada.' 
+                mensagemDiv.style.color = 'orange' 
             }
         } catch (error) {
-            mensagemDiv.textContent = `Erro: ${error.message}`;
-            mensagemDiv.style.color = 'red';
-            console.error('Erro ao listar compras:', error);
+            mensagemDiv.textContent = `Erro: ${error.message}` 
+            mensagemDiv.style.color = 'red' 
+            console.error('Erro ao listar compras:', error) 
         }
-    };
+    } 
 
-    listarCompras();
-});
+    listarCompras() 
+}) 
