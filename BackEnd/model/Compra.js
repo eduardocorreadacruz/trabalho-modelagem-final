@@ -8,7 +8,6 @@ const Compra = db.define('compra',{
     },
     idProduto:{
         type:DataTypes.INTEGER,
-        primaryKey:true,
         references:{
             model:'produtos',
             key:'idProduto'
@@ -16,7 +15,6 @@ const Compra = db.define('compra',{
     },
     idUsuario:{
         type:DataTypes.INTEGER,
-        primaryKey:true,
         references:{
             model:'usuarios',
             key:'idUsuario'
