@@ -1,6 +1,6 @@
 # Trabalho de Modelagem Final
 
-Este é um back-end desenvolvido para simular e automatizar a criação de dados para um Sistema de gerencimaneto de estoque. A ferramenta foi projetada para testes e desenvolvimento, gerando um banco de dados completo e realista sem a necessidade de inserção manual.
+Este é um back-end desenvolvido para simular e automatizar a criação de dados para um Sistema de gerenciamento de estoque. A ferramenta foi projetada para testes e desenvolvimento, gerando um banco de dados completo e realista sem a necessidade de inserção manual.
 
 Basicamente, o sistema limpa todas as tabelas, conecta-se a uma API externa (DummyJSON) para buscar informações de usuários e produtos e, em seguida, simula o histórico de compras. Ele gera compras aleatórias, combinando usuários e produtos, e calcula automaticamente campos como o preço final (aplicando descontos), a forma de pagamento (escolhe uma aleatoriamente, como PIX ou cartão) e o status do pedido. No fim, o projeto entrega um banco de dados robusto e pronto para ser usado por um front-end.
 
